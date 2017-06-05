@@ -1,44 +1,46 @@
 using System;
+using System.Numerics;
 
-namespace CompareArrays
+namespace ConsoleApplication2
 {
-    class CompareArrays
+    class Program
     {
-
         static void Main()
         {
-            string firstStr = Console.ReadLine();
-            string secondStr = Console.ReadLine();
+            string A = Console.ReadLine();
+            string B = Console.ReadLine();
 
-
-
-            char[] firstCharArray = firstStr.ToCharArray();
-            char[] secondCharArray = secondStr.ToCharArray();
-
-
-            int firstCharArrLength = firstCharArray.Length;
-            int secondCharArrLength = secondCharArray.Length;
-
-            if ((1 <= firstCharArrLength && firstCharArrLength <= 128) && (1 <= secondCharArrLength && secondCharArrLength <= 128))
+            if (A == B)
             {
-
-                if (firstCharArrLength == secondCharArrLength)
+                Console.WriteLine("=");
+            }
+            else
+            {
+                for (int i = 0; i < Math.Min(A.Length, B.Length); i++)
                 {
-
-                    Console.WriteLine("=");
-                }
-                else
-                {
-                    if (firstCharArrLength < secondCharArrLength)
-                    {
-                        Console.WriteLine("<");
-                    }
-                    else
+                    if (A[i] > B[i])
                     {
                         Console.WriteLine(">");
+                        break;
+                    }
+                    else if (A[i] < B[i])
+                    {
+                        Console.WriteLine("<");
+                        break;
+                    }
+                    else if(i == Math.Min(A.Length, B.Length) - 1)
+                    {
+                        if (A.Length > B.Length)
+                        {
+                            Console.WriteLine(">");
+                        }
+                        else
+                        {
+                            Console.WriteLine("<");
+                        }
                     }
                 }
             }
         }
     }
-    }
+}
